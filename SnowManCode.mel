@@ -1,0 +1,23 @@
+//polySphere -radius 1 -subdivisionX 20 -subdivisionY 20 -axis 0 1 0 -createdUV 2 -channelhistory 1;
+float $size = 5;
+float $smooth = 26;
+float $smooth2 = 14;
+float $smooth3 = 8;
+string $name = "Body";
+float $head = 1;
+
+polySphere -name $name -r ($size + 1) -sx $smooth -sy $smooth -ax 0 1 0 -cuv 2 -ch 1;
+move -r - os - wd 0 1 0;
+
+polySphere -name ($name + 1) -r ($size - 1) -sx $smooth2 -sy $smooth3 -ax 0 1 0 -cuv 2 -ch 1;
+move -r - os - wd 0 ($size + 3) 0;
+
+polySphere -name ($name + "head") -r ($size - 1) -sx $smooth3 -sy $smooth -ax 0 1 0 -cuv 2 -ch 1;
+move -r - os - wd 0 ($size + 5) 2;
+
+
+polyTorus -name ($name + "head2") -r ($size - 1) -sr 0.5 -tw 0 -sx $smooth -sy $smooth2 -ax 0 1 0 -cuv 1 -ch 1;
+move -r - os - wd 0 ($size + 6) 2;
+
+
+
