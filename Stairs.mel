@@ -1,0 +1,22 @@
+//polyCube -w 1 -h 1 -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+
+
+proc GenerateStairs(float $stairCount, float $stairLength, float $stairWidth, float $stairHeight, float $stepHeight,float $stepRotation, float $stairRotation, float $stairPivot)
+{
+
+   for ($i=0; $i < $stairCount; $i++)
+   {
+    float $stepHeight = $i;
+
+    polyCube -w $stairWidth -h $stairHeight -d $stairLength -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+    xform -os -rp $stairPivot 0 0;
+    rotate -r -os -fo 0 $stairRotation 0;
+    move -r 0 $stepHeight 0;
+    rotate -r -os -fo $stepRotation 0 0;
+    move -r $stepHeight 0 0;
+
+    
+   }
+}
+GenerateStairs(25,2,8,4,25,30,35,60);
+
