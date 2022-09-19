@@ -7,16 +7,16 @@ proc GenerateStairs(float $stairCount, float $stairLength, float $stairWidth, fl
    for ($i=0; $i < $stairCount; $i++)
    {
     float $stepHeight = $i;
+    float $stepRotation = $i;
 
     polyCube -w $stairWidth -h $stairHeight -d $stairLength -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
-    xform -os -rp $stairPivot 0 0;
+    xform -os -rp 0 $stairPivot 0;
     rotate -r -os -fo 0 $stairRotation 0;
     move -r 0 $stepHeight 0;
-    rotate -r -os -fo $stepRotation 0 0;
-    move -r $stepHeight 0 0;
 
-    
+    $stairRotation += $stepRotation;
+
    }
 }
-GenerateStairs(25,2,8,4,25,30,35,60);
+GenerateStairs(40,4,8,2,60,40,60,360);
 
