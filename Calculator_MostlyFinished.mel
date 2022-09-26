@@ -1,0 +1,122 @@
+//Calculator - Main Function - All subfunctions need to be divisble by 2
+//AdditionX - will be using $value and $nums you need to be able to put in the number yourself
+//SubtractionX
+//Multiplication
+//Divison
+//Power
+//Mean
+//Median
+
+
+//I need to work on my preplanning and such
+
+//How does addition work - You take one value(aka num) + any value of your choice than you return the number you got
+//cannot figure this shit out, Im gonna go to the tutor to figure out how to put inputs into arrays type stuff and get a addition value on it
+global proc int Addition(int $values[]) 
+{
+    //int $result = 0;
+    //$num1 + $num2 = $result;
+   // int $result[];
+   // int $num1[];
+    //int $num2[];
+    //$result = $num1 + $num2;
+    //$total = $num1 + $num2;
+    //$result[size($num1 + $num2)] = $total;
+    //int $numCount[] = {$value, $value, $value, $value};
+    //$numCount[size($numCount)] = `$num`;
+  
+    int $operation = $values[0];
+
+    for ($i=0; $i<size($values); $i++)
+    {
+        $operation += $values[0];
+    }
+    return $operation;
+
+}
+    //Addition({5, 10, 10, 2});
+
+
+global proc int Subtraction(int $values[]) 
+{
+    int $operation = $values[0];
+
+    for ($i=0; $i<size($values); $i++)
+    {
+        $operation -= $values[0];
+    }
+    return $operation;
+}
+
+    //Subtraction({20, 10});
+
+
+
+global proc int Multiplication(int $values[])
+{
+
+   int $operation = $values[1];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation *= $values[0];
+        
+    }
+    return $operation;
+}
+    //Multiplication({6, 6});
+
+
+global proc int Divison(int $values[])
+{
+
+ int $operation = $values[0];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation /= $values[$i];
+        
+    }
+    return $operation;
+
+}
+    //Divison({9, 3});
+
+global proc int PowerUp(int $values[])
+{
+  int $operation = $values[0];
+
+    for ($i=0; $i<size($values); $i++)
+    {
+        $operation *= $values[0];
+        
+    }
+    return $operation;
+}
+
+    //PowerUp({8});
+
+global proc MeanFinder()
+{
+    //To be fair Not sure how to tackle this and the median Im heading to the tutors tomorrow to finish this script
+
+}
+
+global proc Median()    
+{
+
+
+}
+
+global proc Calculator(int $input[], int $operation)
+{
+    if ($operation == 1)
+    {
+        print{"You have chosen Addition here is your" + Addition($input[0]) + "Here is your sum" + "\n"}; //Also cannot finish this for some reason I cannot cast a int[] to a int[]
+    }
+
+
+
+}
+
+    Calculator({5, 5, 1});
