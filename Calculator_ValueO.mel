@@ -1,0 +1,250 @@
+//Calculator - Main Function - All subfunctions need to be divisble by 2
+//AdditionX - will be using $value and $nums you need to be able to put in the number yourself
+//SubtractionX
+//Multiplication
+//Divison
+//Power
+//Mean
+//Median
+
+
+//I need to work on my preplanning and such
+
+//How does addition work - You take one value(aka num) + any value of your choice than you return the number you got
+//cannot figure this shit out, Im gonna go to the tutor to figure out how to put inputs into arrays type stuff and get a addition value on it
+global proc float Addition(float $values[]) 
+{
+    //float $result = 0;
+    //$num1 + $num2 = $result;
+   // float $result[];
+   // float $num1[];
+    //float $num2[];
+    //$result = $num1 + $num2;
+    //$total = $num1 + $num2;
+    //$result[size($num1 + $num2)] = $total;
+    //float $numCount[] = {$value, $value, $value, $value};
+    //$numCount[size($numCount)] = `$num`;
+  
+    float $operation = $values[1];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation += $values[0];
+    }
+    return $operation;
+
+}
+    //Addition({5, 10, 10, 2});
+
+
+global proc float Subtraction(float $values[]) 
+{
+    float $operation = $values[1];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation -= $values[0];
+    }
+    return $operation;
+}
+
+    //Subtraction({20, 10});
+
+
+
+global proc float Multiplication(float $values[])
+{
+
+   float $operation = $values[1];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation *= $values[0];
+        
+    }
+    return $operation;
+}
+    //Multiplication({6, 6});
+
+
+global proc float Divison(float $values[])
+{
+
+ float $operation = $values[0];
+
+    for ($i=1; $i<size($values); $i++)
+    {
+        $operation /= $values[$i];
+        
+    }
+    return $operation;
+
+}
+    //Divison({9, 3});
+
+global proc float PowerUp(float $values[])
+{
+  float $operation = $values[0];
+
+    for ($i=0; $i<size($values); $i++)
+    {
+        $operation *= $values[0];
+        
+    }
+    return $operation;
+}
+
+    //PowerUp({8});
+
+global proc float MeanFinder(float $values[])
+{
+    $operation = $values[0];
+
+      for ($i=0; $i<size($values); $i++)
+    {
+        $operation += $values[$i];
+
+        
+    }
+    $operation /= size($values);
+    return $operation;
+
+
+}
+    //MeanFinder({40,2,10,5,80,12,10});
+
+global proc float Median(float $values[])    
+{
+    float $sorted[0] = `sort $values`;
+    int $total = 0;
+    if (size($values) % 2 == 0)
+    {
+        $total = size($values) / 2;
+        
+    }
+    
+    //return $values[0];
+    return $values[0];
+
+}
+    //Median({44, 10, 2, 77, 53, 1});
+    //1 2 10 44 53 77
+    
+global proc Calculator(float $input[], float $operation)
+{
+    if ($operation == 1)
+    {
+        //return{"You have chosen Addition here is your" + Addition($input) + "Here is your sum" + "\n"}; //Also cannot finish this for some reason I cannot cast a float[] to a float[]
+        print {Addition($input)};
+        //$operSymbol = "+";
+    }
+    else if ($operation == 2)
+    {
+        print {Subtraction($input)};
+    }
+    else if ($operation == 3)
+    {
+        print {Multiplication($input)};
+    }
+    else if ($operation == 4)
+    {
+        print {Divison($input)};
+    }
+    else if ($operation == 5)
+    {
+        print {PowerUp($input)};
+    }
+    else if ($operation == 6)
+    {
+        print {MeanFinder($input)};
+    }
+    else if ($operation == 7)
+    {
+        print {Median($input)};
+    }
+    else{
+        print ("Please choose operation from 1 to 7");
+    }
+
+
+
+    //string $sentence;
+    //$sentence = "The result of";
+    //$sentence += floatArrayToString($input, $operSymbol);
+    //$sentence += "=" + $result;
+}
+
+    //Calculator({5}, 10);
+
+
+    global proc CalcUIFunction()
+    {
+
+        string $valueField = `optionVar -q "floatValue1"`;
+        string $valueField2 = `optionVar -q "floatValue2"`;
+        string $valueField3 = `optionVar -q "floatValue3"`;
+        string $valueField4 = `optionVar -q "floatValue4"`;
+
+        string $operField = `optionVar -q "calcOperation"`;
+        string $resultField = `optionVar -q "calcResult"`;
+
+        
+        float $oper = `radioButtonGrp -q -select $operField`;
+        float $input[] = `floatField -q -value $valueField`;
+        //float $input[] = `floatField -q -value $valueField2`;
+        //float $input[] = `floatField -q -value $valueField3`;
+        //float $input[] = `floatField -q -value $valueField4`;
+
+
+        //float $float2[] = `floatField -q -value $valueField2`;
+
+
+
+        string $result = Calculator($input, $oper);
+        textField -e -text $result $resultField;
+
+
+
+    }
+
+
+    global proc CalculatorUI()
+    {
+       string $mWindow = "calcWindow";
+
+        if (`window -exists $mWindow`)
+            deleteUI $mWindow;
+
+        $mWindow = `window -title "Calculator" 
+                        -widthHeight 300 400
+                        -resizeToFitChildren 1
+                        $mWindow`;
+
+        string $mColumn =`columnLayout -parent $mWindow -adjustableColumn 1`;
+        //button -label "Add" -command Addition
+        //button -label "Subtraction" -command Subtraction
+        //button -label "Multiplication" -command Multiplication
+        //button -label "Divison" -command Divison
+        //button -label "PowerUp" -command PowerUp
+        //button -label "MeanFinder" -command MeanFinder
+        //button -label "Median" -command Median
+        optionVar -stringValue "floatValue1" `floatField`;
+        optionVar -stringValue "floatValue2" `floatField`;
+        optionVar -stringValue "floatValue3" `floatField`;
+        optionVar -stringValue "floatValue4" `floatField`;
+
+        
+        optionVar -stringValue "calcOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 4 -labelArray4 "Addition" "Subtraction" "Multiplication" "Divison"`; 
+        optionVar -stringValue "calcOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 3 -labelArray3 "PowerUp" "MeanFinder" "Median"`;
+        
+
+        button -label "Solve" -command "CalcUIFunction";
+        optionVar -stringValue "calcResult" `textField -parent $mColumn -editable 0`;
+
+
+   
+
+    showWindow $mWindow;
+    }
+
+    CalculatorUI();
