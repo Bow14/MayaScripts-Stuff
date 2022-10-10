@@ -1,0 +1,32 @@
+//Nested loops are needed, The first loop is used for finding the objects you have selected the second loop is to randomize the placements
+//Function is going to have many inputs like how many times you want duplicates and min and max values 
+
+proc RandomPlacement(float $dupS, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+    //polySphere
+    select -r pSphere1;
+    float $posX[] = {$minX, $maxX};
+    float $posY[] = {$minY, $maxY};
+    float $posZ[] = {$minZ, $maxZ}; 
+
+
+    for ($i=0; $i < $dupS; $i++)
+    {
+        //float $amount = $i
+
+        duplicate -smartTransform;
+        
+        float $randSpotX = `rand $posX[0] $posX[1]`;
+        float $randSpotY = `rand $posY[0] $posY[1]`;
+        float $randSpotZ = `rand $posZ[0] $posZ[1]`;
+        move -r $randSpotX $randSpotY $randSpotZ;
+        
+
+        //move -r $minX $minY $minZ;
+    } 
+    
+}
+    RandomPlacement(3, -10, 12, -5, 10, -2, 5);
+
+
+    //I fucking feel like a dunce 
