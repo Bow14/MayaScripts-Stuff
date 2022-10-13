@@ -3,7 +3,7 @@
 
 proc RandomPlacement(float $dupS, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
 {
-    //polySphere
+    polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
     select -r pSphere1;
     float $posX[] = {$minX, $maxX};
     float $posY[] = {$minY, $maxY};
@@ -24,9 +24,25 @@ proc RandomPlacement(float $dupS, float $minX, float $maxX, float $minY, float $
 
         //move -r $minX $minY $minZ;
     } 
+
+    
     
 }
     RandomPlacement(3, -10, 12, -5, 10, -2, 5);
 
+      global proc PlacementUI()
+    {
+       string $mWindow = "plaWindow";
 
+        if (`window -exists $mWindow`)
+            deleteUI $mWindow;
+
+        $mWindow = `window -title "PlacementGenerator" 
+                        -widthHeight 300 400
+                        -resizeToFitChildren 1
+                        $mWindow`;
+
+        showWindow $mWindow;
+
+    }
     //I fucking feel like a dunce 
